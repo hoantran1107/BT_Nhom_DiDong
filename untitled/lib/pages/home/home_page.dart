@@ -5,6 +5,9 @@ import 'package:untitled/pages/cart/cart_history.dart';
 import 'package:untitled/pages/home/main_food_page.dart';
 import 'package:untitled/utils/colors.dart';
 
+import '../login/FireBaseHome.dart';
+import '../login/login_page.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -23,9 +26,7 @@ class _HomePageState extends State<HomePage> {
     Container(
       child: Center(child: Text('next next page')),
     ),
-    Container(
-      child: Center(child: Text('next next page')),
-    ),
+    MyLogin()
   ];
 
   void onTapNav(int index){
@@ -82,9 +83,7 @@ class _HomePageState extends State<HomePage> {
         child: Center(child: Text('next page')),
       ),
       CartHistory(),
-      Container(
-        child: Center(child: Text('next next page')),
-      ),
+      MyLogin()
     ];
   }
   List<PersistentBottomNavBarItem> _navBarsItems() {

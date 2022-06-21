@@ -185,7 +185,7 @@ class RecommendedFoodDetail extends StatelessWidget {
                           onTap: () {
                             controller.addItem(product);
                           },
-                          child: BigText(text: '\$${product.price!} | Add to cart',
+                          child: BigText(text: '\$${product.price!} | Thêm vào giỏ hàng',
                             color: Colors.white,)),
                     )
                   ],

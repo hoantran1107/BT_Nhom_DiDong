@@ -1,32 +1,4 @@
-class Product {
-  int? _totalSize;
-  int? _typeId;
-  int? _offset;
-  late List<ProductModel>? _products;
-  List<ProductModel>? get products => _products;
-
-  Product({required totalSize,
-    required typeId,
-    required offset,
-    required products,}){
-    this._totalSize=totalSize;
-    this._typeId= typeId;
-    this._offset= offset;
-    this._products=products;
-  }
-
-  Product.fromJson(Map<String, dynamic> json) {
-    _totalSize = json['total_size'];
-    _typeId = json['type_id'];
-    _offset = json['offset'];
-    if (json['products'] != null) {
-      _products = <ProductModel>[];
-      json['products'].forEach((v) {
-        _products!.add(ProductModel.fromJson(v));
-      });
-    }
-  }
-}
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class ProductModel {
   int? id;
@@ -80,4 +52,46 @@ class ProductModel {
     };
   }
 
+}
+class ProdProductsSnapshot{
+  ProductModel? products;
+  DocumentReference? docRef;
+  ProdProductsSnapshot({
+    required this.products,
+    required this.docRef,
+  });
+
+  factory ProdProductsSnapshot.formSnapshot(DocumentSnapshot docSnap){
+    return
+      ProdProductsSnapshot(
+          products: ProductModel.fromJson(docSnap.data() as Map<String, dynamic>),
+          docRef: docSnap.reference);
+  }
+
+  Future<void> updateProduct(ProductModel products) async{
+    await docRef!.update(products.toJson());
+
+  }
+
+  Future<void> delete() async{
+    await docRef!.delete();
+  }
+
+  static Future<DocumentReference> addProduct(ProductModel sv){
+    return FirebaseFirestore.instance.collection("dogfood").add(sv.toJson());
+  }
+
+  static Stream<List<ProdProductsSnapshot>> getAllProduct(){
+    Stream<QuerySnapshot> qs = FirebaseFirestore.instance.collection("dogfood").orderBy("id").snapshots();
+    Stream<List<DocumentSnapshot>> listDocSnap = qs.map((querySnapshot) => querySnapshot.docs);
+    return listDocSnap.map(
+            (listds) => listds.map((docSnap) => ProdProductsSnapshot.formSnapshot(docSnap)).toList());
+  }
+
+  static Stream<List<ProdProductsSnapshot>> getAllDog(){
+    Stream<QuerySnapshot> qs = FirebaseFirestore.instance.collection("products").snapshots();
+    Stream<List<DocumentSnapshot>> listDocSnap = qs.map((querySnapshot) => querySnapshot.docs);
+    return listDocSnap.map(
+            (listds) => listds.map((docSnap) => ProdProductsSnapshot.formSnapshot(docSnap)).toList());
+  }
 }

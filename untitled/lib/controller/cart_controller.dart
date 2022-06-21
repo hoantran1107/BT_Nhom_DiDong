@@ -63,7 +63,7 @@ class CartController extends GetxController{
             });
           }
           else{
-              Get.snackbar("Item count", "You should at least add an item in the cart !",
+              Get.snackbar("Nhắc nhở", "Bạn phải thêm ít nhất 1 sản phẩm vào giỏ hàng !",
                   backgroundColor: AppColors.mainColor,
                   colorText: Colors.white,
                   duration: Duration(seconds: 2));
@@ -138,6 +138,19 @@ class CartController extends GetxController{
 
    void clear(){
      _items={};
+     update();
+   }
+
+   List<CartModel> getCartHistoryList(){
+     return cartRepo.getCartHistoryList();
+   }
+
+   set setItems(Map<int, CartModel> setItems){
+     _items={};
+     _items=setItems;
+   }
+   void addToCartList(){
+     cartRepo.addToCartList(getItems);
      update();
    }
 }

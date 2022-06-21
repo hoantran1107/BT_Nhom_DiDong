@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:untitled/model/Product.dart';
+import 'package:untitled/pages/cart/cart_history.dart';
 import 'package:untitled/pages/food/popular_food_detail.dart';
 import 'package:untitled/pages/food/recommended_food_detail.dart';
 import 'package:untitled/pages/home/home_page.dart';
@@ -15,11 +16,13 @@ class RouteHelper{
   static const String recommendedFood = '/recommended-food';
   static const String cartPage = '/cart-page';
   static const String popularDog = '/dog-page';
+  static const String history='/';
   //Test firebase
   static const String recommendedFood2 = '/recommended2-food';
   //Function
   static String getSplashPage()=> '$splashPage';
   static String getInitial ()=> '$initial';
+  static String getCartHistory()=>'$history';
   static String getPopularFood(int pageId,String page)=> '$popularFood?pageId=$pageId&page=$page';
   static String getPopularDog(int pageId,String page)=> '$popularDog?pageId=$pageId&page=$page';
   static String getRecommendedFood(int pageId,String page)=> '$recommendedFood?pageId=$pageId&page=$page';
@@ -30,6 +33,8 @@ class RouteHelper{
     GetPage(name: splashPage, page: () => const SplashPage(),
         transition: Transition.fadeIn),
     GetPage(name: initial, page: () => const HomePage(),
+    transition: Transition.fadeIn),
+    GetPage(name: history, page: ()=>const CartHistory(),
     transition: Transition.fadeIn),
     GetPage(
         name: popularDog,

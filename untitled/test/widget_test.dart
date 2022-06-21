@@ -14,25 +14,5 @@ import 'package:untitled/main.dart';
 import 'package:untitled/model/Product.dart';
 
 void main() {
-  WidgetsFlutterBinding.ensureInitialized();
-  Firebase.initializeApp();
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    late ProdProducts productModel;
-    List<ProdProducts> newList = [];
-    List<ProdProducts> truyenCuoiDS = [];
-    QuerySnapshot value =
-    await FirebaseFirestore.instance.collection("food").get();
-
-    value.docs.forEach((element) {
-       print(element.data());
-      productModel = ProdProducts(
-        name: element.get("name"),
-        brand: element.get("brand")
-      );
-      newList.add(productModel);
-    },);
-    truyenCuoiDS = newList;
-    });
   }
 

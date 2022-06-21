@@ -11,8 +11,6 @@ import '../model/cart_model.dart';
 
 
 class PopularProductController extends GetxController {
-
-
   List<ProductModel> _popularProductList = [];
 
   int _quantity =0;
@@ -51,6 +49,7 @@ class PopularProductController extends GetxController {
     }
   }
 
+
   void setQuantity(bool inIncrement){
     if(inIncrement){
       //increment quantity
@@ -66,7 +65,7 @@ class PopularProductController extends GetxController {
 
   int checkQuantity(int quantity){
     if((_inCartItem + quantity) < 0){
-      Get.snackbar("Item count", "You can't reduce more !",
+      Get.snackbar("Nhắc nhở", "Không thể giảm thêm !",
       backgroundColor: AppColors.mainColor,
 
       colorText: Colors.white,
@@ -78,7 +77,7 @@ class PopularProductController extends GetxController {
       return 0;
     }
     else if((_inCartItem + quantity) > 20){
-      Get.snackbar("Item count", "You can't add more !",
+      Get.snackbar("Nhắc nhở", "Vượt quá số lượng có thể thêm !",
           backgroundColor: AppColors.mainColor,
           colorText: Colors.white,
           duration: Duration(seconds: 2));

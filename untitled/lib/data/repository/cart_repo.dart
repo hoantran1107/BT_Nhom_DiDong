@@ -18,8 +18,6 @@ class CartRepo{
 
   //store item add local storge
   void addToCartList(List<CartModel> cartList){
-    // sharedPreferences.remove(AppConstants.CART_LIST);
-    // sharedPreferences.remove(AppConstants.CART_HISTORY_LIST);
     var time =DateTime.now().toString();
     cart = [];
     cartList.forEach((element) {
