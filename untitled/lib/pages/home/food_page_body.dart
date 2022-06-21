@@ -13,6 +13,7 @@ import 'package:untitled/route/router_helper.dart';
 import 'package:untitled/utils/colors.dart';
 import 'package:untitled/utils/dimentions.dart';
 import 'package:untitled/widgets/app_column.dart';
+import 'package:untitled/widgets/app_price.dart';
 import 'package:untitled/widgets/big_text.dart';
 import 'package:untitled/widgets/icon_and_text_widget.dart';
 import 'package:untitled/widgets/small_text.dart';
@@ -195,24 +196,10 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                                             //recommendedProduct.recommendedProductList[index].description!
                                             ,size: 12,color: AppColors.mainBlackColor,),
                                           SizedBox(height: Dimentions.height10,),
-                                          Row(
-                                            crossAxisAlignment: CrossAxisAlignment.start,
-                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              IconAndText(
-                                                  icon: Icons.circle_sharp,
-                                                  text: 'Normal',
-                                                  iconColor: AppColors.iconColor1),
-                                              IconAndText(
-                                                  icon: Icons.location_on,
-                                                  text: '1.7 km',
-                                                  iconColor: AppColors.mainColor),
-                                              IconAndText(
-                                                  icon: Icons.access_time_rounded,
-                                                  text: '32 min',
-                                                  iconColor: AppColors.iconColor2),
-                                            ],
-                                          )
+                                          AppPrice(
+                                              price: A[index].products!.price!,
+                                              stars: A[index].products!.stars!,
+                                              location: A[index].products!.location!)
                                         ],
                                       ),
                                     ),
@@ -413,7 +400,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
               ),
               child: Container(
                 padding: EdgeInsets.only(top: Dimentions.width15,left: Dimentions.width15,right: Dimentions.width15),
-                child: AppColumn(text: popularProduct.name!,),
+                child: AppColumn(text: popularProduct.name!,star: popularProduct.stars!),
               ),
 
             ),

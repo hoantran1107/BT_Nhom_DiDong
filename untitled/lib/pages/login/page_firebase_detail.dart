@@ -3,6 +3,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:untitled/utils/colors.dart';
 import 'dart:io';
 import '../../model/product_model.dart';
 import 'dialogs.dart';
@@ -34,6 +35,7 @@ class _PageSVDetailState extends State<PageSVDetail> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: AppColors.primaryPurple,
         title: Text(title),
       ),
       body: SingleChildScrollView(
@@ -193,7 +195,7 @@ class _PageSVDetailState extends State<PageSVDetail> {
 
   @override
   void dispose() {
-
+    super.dispose();
   }
 
   @override

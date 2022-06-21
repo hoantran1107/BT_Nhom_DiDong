@@ -18,16 +18,6 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   late PersistentTabController _controller;
   int _selectedIndex=0;
-  List pages =[
-    MainFoodPage(),
-    Container(
-      child: Center(child: Text('next page')),
-    ),
-    Container(
-      child: Center(child: Text('next next page')),
-    ),
-    MyLogin()
-  ];
 
   void onTapNav(int index){
     setState(() {
@@ -78,11 +68,11 @@ class _HomePageState extends State<HomePage> {
 
   List<Widget> _buildScreens() {
     return [
+      //Trang 0
       MainFoodPage(),
-      Container(
-        child: Center(child: Text('next page')),
-      ),
+      //Trang 1
       CartHistory(),
+      //Trang 2
       MyLogin()
     ];
   }
@@ -93,12 +83,6 @@ class _HomePageState extends State<HomePage> {
         title: ("Home"),
         activeColorPrimary: AppColors.yellowColor,
         inactiveColorPrimary: AppColors.mainColor,
-      ),
-      PersistentBottomNavBarItem(
-        icon: Icon(CupertinoIcons.archivebox_fill),
-        title: ("Archive"),
-        activeColorPrimary:AppColors.yellowColor,
-        inactiveColorPrimary:  AppColors.mainColor,
       ),
       PersistentBottomNavBarItem(
         icon: Icon(CupertinoIcons.cart_fill),

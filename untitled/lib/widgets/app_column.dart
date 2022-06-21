@@ -10,8 +10,9 @@ import 'icon_and_text_widget.dart';
 
 class AppColumn extends StatelessWidget {
   final String text;
+  final int star;
 
-  const AppColumn({Key? key, required this.text}) : super(key: key);
+  const AppColumn({Key? key, required this.text,required this.star}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +26,8 @@ class AppColumn extends StatelessWidget {
             //Same thing together
             Wrap(
               children:
-              List.generate(5,(index) {return Icon(Icons.star,color: AppColors.mainColor,size: Dimentions.height15,);})
+              List.generate(star,(index) {
+                return Icon(Icons.star,color: AppColors.mainColor,size: Dimentions.height15,);})
               ,
             ),
             SizedBox(width: Dimentions.width10,),
@@ -37,23 +39,6 @@ class AppColumn extends StatelessWidget {
           ],
         ),
         SizedBox(height: Dimentions.height20,),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            IconAndText(
-                icon: Icons.circle_sharp,
-                text: 'Normal',
-                iconColor: AppColors.iconColor1),
-            IconAndText(
-                icon: Icons.location_on,
-                text: '1.7 km',
-                iconColor: AppColors.mainColor),
-            IconAndText(
-                icon: Icons.access_time_rounded,
-                text: '32 min',
-                iconColor: AppColors.iconColor2),
-          ],
-        )
       ],
     );
   }

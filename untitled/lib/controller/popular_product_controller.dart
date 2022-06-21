@@ -42,7 +42,7 @@ class PopularProductController extends GetxController {
       },);
       _popularProductList = newList;
       _isLoaded = true;
-      update(); //setState
+      update(); //setState = ChangeNotify
     }
     else {
       print('could not get product');

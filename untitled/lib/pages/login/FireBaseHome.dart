@@ -9,6 +9,7 @@ import 'package:untitled/pages/login/page_firebase_detail.dart';
 import '../../model/product_model.dart';
 import '../../utils/colors.dart';
 import '../../utils/dimentions.dart';
+import '../../widgets/app_price.dart';
 import '../../widgets/big_text.dart';
 import '../../widgets/icon_and_text_widget.dart';
 import 'dialogs.dart';
@@ -27,6 +28,7 @@ class _HomeFireBaseState extends State<HomeFireBase> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: AppColors.primaryPurple,
         title: Text("My Fire Base Home"),
         actions: [
           IconButton(onPressed: () {
@@ -177,23 +179,10 @@ class _HomeFireBaseState extends State<HomeFireBase> {
                                         //recommendedProduct.recommendedProductList[index].description!
                                         ,size: 12,color: AppColors.mainBlackColor,),
                                       SizedBox(height: Dimentions.height10,),
-                                      Row(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          IconAndText(
-                                              icon: Icons.circle_sharp,
-                                              text: 'Normal',
-                                              iconColor: AppColors.iconColor1),
-                                          IconAndText(
-                                              icon: Icons.location_on,
-                                              text: '1.7 km',
-                                              iconColor: AppColors.mainColor),
-                                          IconAndText(
-                                              icon: Icons.access_time_rounded,
-                                              text: '32 min',
-                                              iconColor: AppColors.iconColor2),
-                                        ],
+                                      AppPrice(
+                                        location: product[index].products!.location!,
+                                        price: product[index].products!.price!,
+                                        stars: product[index].products!.stars!,
                                       )
                                     ],
                                   ),

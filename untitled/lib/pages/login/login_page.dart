@@ -23,8 +23,8 @@ class _MyLoginState extends State<MyLogin> {
     TextEditingController txtPass = TextEditingController();
     return Scaffold(
       appBar: AppBar(
-
-          title: Text("Login")
+          title: Text("Login"),
+        backgroundColor: AppColors.primaryPurple,
       ),
 
       body: SingleChildScrollView(
@@ -34,6 +34,13 @@ class _MyLoginState extends State<MyLogin> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                SizedBox(height: 30,),
+                Image(image: AssetImage(
+                  "assets/images/PetShop-removebg.png"
+                )),
+                SizedBox(
+                  height: 100,
+                ),
                 TextFormField(
                   controller: txtUser,
                   decoration: const InputDecoration(
@@ -108,9 +115,8 @@ class _MyLoginState extends State<MyLogin> {
                     Get.snackbar("Nhắc nhở",
                         'Đang đăng nhập',
                         backgroundColor: AppColors.mainColor,
-
                         colorText: Colors.white,
-                        duration: Duration(seconds: 500));
+                        duration: Duration(seconds: 5));
                     var user = await signWithGoogle();
                     if (user != null) {
                       Navigator.of(context).pushAndRemoveUntil(
@@ -118,6 +124,7 @@ class _MyLoginState extends State<MyLogin> {
                             builder: (context) => const HomeFireBase(),)
                           , (Route<dynamic> route) => false);
                       Get.snackbar("Nhắc nhở",
+
                           'Hello ${FirebaseAuth.instance.currentUser?.email ??
                               ""}',
                           backgroundColor: AppColors.mainColor,
@@ -149,6 +156,8 @@ class _MyLoginState extends State<MyLogin> {
                       }, child: Text("register"))
                     ],),
                 ElevatedButton(
+                  style: ButtonStyle(
+                  ),
                   onPressed: () async {
                     await signWithGoogle().whenComplete(() =>
                         Navigator.push(context, MaterialPageRoute(
@@ -156,7 +165,7 @@ class _MyLoginState extends State<MyLogin> {
                     ;
 
                     //page firebase
-                  }, child: Text("Đăng nhập")
+                  }, child: Text("Đăng nhập",)
 
                 ),
                 Text("${thongBaoLoi}")
